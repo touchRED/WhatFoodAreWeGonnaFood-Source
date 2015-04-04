@@ -1,0 +1,18 @@
+body{
+	margin:0;
+	padding: 0;
+}
+
+#mapness{
+	position: absolute;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
+
+.jumbotron{
+	text-align: center;
+	background-color: #D98C90;
+	margin-bottom: 0;
+}
