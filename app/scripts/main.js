@@ -2,15 +2,21 @@ var map;
 var infoWindow;
 var service;
 
-function init(){
+if('geolocation' in navigator){
+	navigator.geolocation.getCurrentPosition(init);
+}else{
+	console.log("geolocation couldn't be initialized");
+}
+
+function init(position){
 	var mapOptions = {
-		center: new google.maps.LatLng(33.7714,-84.2978),
-		zoom: 15
+		center: new google.maps.LatLng(position.coords.latitude + 0.0035, position.coords.longitude),
+		zoom: 16
 	};
 
 	var request = {
-		location: mapOptions.center,
-		radius: 500,
+		location: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+		radius: 1000,
 		types: ['restaurant']
 	};
 
@@ -48,4 +54,4 @@ function createMarker(place){
 	});
 }
 
-google.maps.event.addDomListener(window, 'load', init);
+// google.maps.event.addDomListener(window, 'load', init);
